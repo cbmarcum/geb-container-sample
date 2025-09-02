@@ -51,7 +51,7 @@ dependencies {
     // Use the awesome Spock testing and specification framework even with Java
     testImplementation libs.spock.core
     testImplementation libs.junit
-    testImplementation libs.geb.spock
+    testImplementation libs.geb.spock7
 
 
     integrationTestImplementation libs.geb.container

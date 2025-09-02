@@ -6,11 +6,12 @@ groovy = "4.0.26"
 guava = "33.4.5-jre"
 junit = "4.13.2"
 spock-core = "2.3-groovy-4.0"
-geb-spock = "8.0-SNAPSHOT"
+geb-spock7 = "7.0"
+geb-spock8 = "8.0-SNAPSHOT"
 testcontainers = "1.21.3"
 selenium = "4.33.0"
 remote-driver = "3.141.59"
-geb-container = "0.2.0"
+geb-container = "0.3.0"
 
 [libraries]
 # groovy-all = { module = "org.codehaus.groovy:groovy-all", version.ref = "groovy-all" }
@@ -18,7 +19,8 @@ groovy = { module = "org.apache.groovy:groovy", version.ref = "groovy" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 junit = { module = "junit:junit", version.ref = "junit" }
 spock-core = { module = "org.spockframework:spock-core", version.ref = "spock-core" }
-geb-spock = { module = "org.apache.groovy.geb:geb-spock", version.ref = "geb-spock" }
+geb-spock7 = { module = "org.gebish:geb-spock", version.ref = "geb-spock7" }
+geb-spock8 = { module = "org.apache.groovy.geb:geb-spock", version.ref = "geb-spock8" }
 # testcontainers-selenium = { module = "org.testcontainers:selenium", version.ref = "testcontainers" }
 # selenium-chrome-driver = { module = "org.seleniumhq.selenium:selenium-chrome-driver", version.ref = "selenium" }
 selenium-firefox-driver = { module = "org.seleniumhq.selenium:selenium-firefox-driver", version.ref = "selenium" }

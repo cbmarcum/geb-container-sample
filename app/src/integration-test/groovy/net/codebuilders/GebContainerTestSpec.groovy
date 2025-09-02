@@ -2,6 +2,7 @@ package net.codebuilders
 
 import grails.plugin.geb.ContainerGebConfiguration
 import grails.plugin.geb.ContainerGebSpec
+import org.testcontainers.Testcontainers
 import spock.lang.Shared
 
 
@@ -9,6 +10,7 @@ import spock.lang.Shared
  * See https://docs.grails.org/latest/guide/testing.html#functionalTesting and https://www.gebish.org/manual/current/
  * for more instructions on how to write functional tests with Grails and Geb.
  */
+// @org.testcontainers.spock.Testcontainers()
 @ContainerGebConfiguration(reporting = true)
 class GebContainerTestSpec extends ContainerGebSpec {
 
@@ -17,18 +19,23 @@ class GebContainerTestSpec extends ContainerGebSpec {
 
     void 'should display the correct title on the home page'() {
         when: 'visiting the home page'
-            go('/')
+            go('https://groovy.apache.org/geb/')
 
         then: 'the page title is correct'
-            title == 'Welcome to Grails'
+            title == 'Geb - Very Groovy Browser Automation'
     }
 
-    void 'should display the correct heading on the home page'() {
-        when: 'visiting the home page'
-        go('/')
 
-        then: 'the heading is correct'
-        $("h1").text() == 'Welcome to Grails'
+    void 'should display the correct title on the docs page'() {
+        when: 'visiting the home page'
+        go('https://groovy.apache.org/geb/manual/snapshot/')
+
+        then: 'the title is correct'
+        title == 'The Book Of Geb'
+    }
+
+    def cleanup() {
+
     }
 
 }

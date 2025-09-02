@@ -16,7 +16,7 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    mavenLocal() // for local geb-container
+    mavenLocal() // for local geb-container and geb 8
 }
 
 // begin section for geb-container
@@ -51,13 +51,20 @@ dependencies {
     // Use the awesome Spock testing and specification framework even with Java
     testImplementation libs.spock.core
     testImplementation libs.junit
-    // testImplementation libs.geb.spock
+    testImplementation libs.geb.spock
+
 
     integrationTestImplementation libs.geb.container
 
     // testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4'
+    // Need a driver implementation
+    testRuntimeOnly libs.selenium.firefox.driver
+
+    // TEST
+    integrationTestImplementation 'org.testcontainers:spock:1.21.3'
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -85,6 +92,7 @@ tasks.register('integrationTest', Test) {
         events 'passed'
     }
 
+    // systemProperty('geb.cacheDriver', 'false')
     // systemProperty('geb.env', System.getProperty('geb.env'))
     systemProperty('grails.geb.recording.mode', 'RECORD_ALL') // also RECORD_FAILING
     systemProperty('grails.geb.browser.type', 'firefox') // also chrome and edge

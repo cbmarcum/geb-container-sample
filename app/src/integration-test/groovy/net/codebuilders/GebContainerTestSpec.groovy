@@ -34,6 +34,14 @@ class GebContainerTestSpec extends ContainerGebSpec {
         title == 'The Book Of Geb'
     }
 
+    void 'should display the correct title with a grails app'() {
+        when: 'visiting the home page'
+        go('/')
+
+        then: 'the title is correct'
+        title == 'Welcome to Grails'
+    }
+
     def cleanup() {
 
     }

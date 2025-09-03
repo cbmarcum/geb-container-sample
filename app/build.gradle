@@ -89,7 +89,7 @@ tasks.register('integrationTest', Test) {
     shouldRunAfter test
 
     testLogging {
-        events 'passed'
+        events 'passed', 'skipped', 'failed'
     }
 
     // systemProperty('geb.cacheDriver', 'false')
@@ -101,5 +101,6 @@ tasks.register('integrationTest', Test) {
 check.dependsOn integrationTest
 
 tasks.withType(Test).configureEach {
+    outputs.upToDateWhen { false } // always run tests
     useJUnitPlatform()
 }

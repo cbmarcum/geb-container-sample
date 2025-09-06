@@ -2,7 +2,6 @@ package net.codebuilders
 
 import grails.plugin.geb.ContainerGebConfiguration
 import grails.plugin.geb.ContainerGebSpec
-import org.testcontainers.Testcontainers
 import spock.lang.Shared
 
 
@@ -10,7 +9,6 @@ import spock.lang.Shared
  * See https://docs.grails.org/latest/guide/testing.html#functionalTesting and https://www.gebish.org/manual/current/
  * for more instructions on how to write functional tests with Grails and Geb.
  */
-// @org.testcontainers.spock.Testcontainers()
 @ContainerGebConfiguration(reporting = true)
 class GebContainerTestSpec extends ContainerGebSpec {
 
@@ -34,8 +32,18 @@ class GebContainerTestSpec extends ContainerGebSpec {
         title == 'The Book Of Geb'
     }
 
-    def cleanup() {
+    // this test requires a new Grails app running on localhost:8080
+    void 'should display the correct title with a grails app'() {
+        when: 'visiting the home page'
+        go('/')
 
+        then: 'the title is correct'
+        title == 'Welcome to Grails'
+    }
+
+    def cleanup() {
+        // give the vnc container time to copy the video
+        sleep(1000)
     }
 
 }

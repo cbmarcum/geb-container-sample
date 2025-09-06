@@ -16,7 +16,7 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    mavenLocal() // for local geb-container and geb 8
+    // mavenLocal() // for local geb-container and geb 8
 }
 
 // begin section for geb-container
@@ -89,17 +89,16 @@ tasks.register('integrationTest', Test) {
     shouldRunAfter test
 
     testLogging {
-        events 'passed'
+        events 'passed', 'skipped', 'failed'
     }
 
-    // systemProperty('geb.cacheDriver', 'false')
-    // systemProperty('geb.env', System.getProperty('geb.env'))
+    systemProperty('geb.env', System.getProperty('geb.env')?: 'firefox')
     systemProperty('grails.geb.recording.mode', 'RECORD_ALL') // also RECORD_FAILING
-    systemProperty('grails.geb.browser.type', 'firefox') // also chrome and edge
 }
 
 check.dependsOn integrationTest
 
 tasks.withType(Test).configureEach {
+    outputs.upToDateWhen { false } // always run tests
     useJUnitPlatform()
 }

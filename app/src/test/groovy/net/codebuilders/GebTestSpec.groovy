@@ -1,7 +1,6 @@
 package net.codebuilders
 
 import geb.spock.GebSpec
-import spock.lang.Shared
 
 /**
  * See https://docs.grails.org/latest/guide/testing.html#functionalTesting and https://www.gebish.org/manual/current/
@@ -12,12 +11,12 @@ class GebTestSpec extends GebSpec {
 
     void 'should display the correct title on the home page'() {
         when: 'visiting the home page'
-            go('https://groovy.apache.org/geb/')
+        go('https://groovy.apache.org/geb/')
+        sleep(10 * 1000)
 
         then: 'the page title is correct'
             title == 'Geb - Very Groovy Browser Automation'
     }
-
 
     void 'should display the correct title on the docs page'() {
         when: 'visiting the home page'

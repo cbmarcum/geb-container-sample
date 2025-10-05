@@ -17,16 +17,16 @@
  *  under the License.
  */
 
+import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.edge.EdgeOptions
-import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.remote.RemoteWebDriver
 
 // Configuration for container-based Geb testing
 // This driver configuration will be used by WebDriverContainerHolder
 environments {
 
-    // run via “./gradlew firefoxTest”
+    // run via “./gradlew integrationTest” // default browser container
     // See: https://github.com/SeleniumHQ/selenium/blob/trunk/java/src/org/openqa/selenium/firefox/FirefoxDriver.java
     firefox {
         driver = {
@@ -36,9 +36,10 @@ environments {
             // webdriver.remote.server before this closure is called
             new RemoteWebDriver(firefoxOptions)
         }
+        containerBrowser = 'firefox'
     }
 
-    // run via “./gradlew chromeTest”
+    // run via “./gradlew integrationTest -Dgeb.env=edge”
     // See: https://github.com/SeleniumHQ/selenium/blob/trunk/java/src/org/openqa/selenium/chrome/ChromeDriver.java
     chrome {
         driver = {
@@ -59,9 +60,10 @@ environments {
             // webdriver.remote.server before this closure is called
             new RemoteWebDriver(chromeOptions)
         }
+        containerBrowser = 'chrome'
     }
 
-    // run via “./gradlew edgeTest”
+    // run via “./gradlew integrationTest -Dgeb.env=edge”
     // See: https://github.com/SeleniumHQ/selenium/blob/trunk/java/src/org/openqa/selenium/edge/EdgeDriver.java
     edge {
         driver = {
@@ -72,4 +74,5 @@ environments {
             new RemoteWebDriver(edgeOptions)
         }
     }
+    containerBrowser = 'edge'
 }

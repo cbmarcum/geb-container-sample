@@ -2,8 +2,6 @@ package net.codebuilders
 
 import grails.plugin.geb.ContainerGebConfiguration
 import grails.plugin.geb.ContainerGebSpec
-import net.codebuilders.App
-
 
 /**
  * See https://docs.grails.org/latest/guide/testing.html#functionalTesting and https://www.gebish.org/manual/current/
@@ -19,23 +17,28 @@ class GebContainerTestSpec extends ContainerGebSpec {
         server.start(8080)
     }
 
-    // the config file should contain a 'hostPort = 8090' setting
-    def "should use the hostPort con GebConfig.groovy"() {
-
+    def "the home page title is correct"() {
         when: "go to localhost"
         go "/"
 
         then: "the page title should be correct"
         title == "Hello Geb"
+    }
 
-        and: "the welcome header should be displayed"
+    def "the home page heading is correct"() {
+        when: "go to localhost"
+        go "/"
+
+        then: "the welcome header should be displayed"
         $("h1").text() == "Welcome to the Geb/Spock Test"
-
     }
 
     def cleanup() {
         // give the vnc container time to copy the video
         sleep(1000)
+    }
+
+    def cleanupSpec() {
         server.stop(0)
     }
 

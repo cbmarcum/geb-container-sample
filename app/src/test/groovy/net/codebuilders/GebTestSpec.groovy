@@ -10,9 +10,6 @@ import spock.lang.Shared
 
 class GebTestSpec extends GebSpec {
 
-    @Shared
-    serverPort = 8080
-
     void 'should display the correct title on the home page'() {
         when: 'visiting the home page'
             go('https://groovy.apache.org/geb/')

@@ -3,12 +3,36 @@
  */
 package net.codebuilders
 
+import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.SimpleFileServer
+import jdk.jpackage.internal.resources.ResourceLocator
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 class App {
+
+    static TestFileServer server
+
+    static void main(String[] args) {
+        // println new App().greeting
+
+        server = new TestFileServer()
+
+        server.start(8080)
+
+        // Add a shutdown hook to stop the server gracefully
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Stopping server...")
+            server.stop(0); // Stop immediately
+        }))
+
+    }
+
     String getGreeting() {
         return 'Hello World!'
     }
 
-    static void main(String[] args) {
-        println new App().greeting
-    }
 }

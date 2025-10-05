@@ -14,12 +14,11 @@ plugins {
 }
 
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
-    // mavenLocal() // for local geb-container and geb 8
 }
 
-// begin section for geb-container
+// we're using a separate source set for browser container tests
+// but it's not required. You could just use test.
 sourceSets {
     integrationTest {
         groovy {
@@ -37,18 +36,13 @@ configurations {
     integrationTestImplementation.extendsFrom implementation
     integrationTestRuntimeOnly.extendsFrom runtimeOnly
 }
-// end section for geb-container
-
-
 
 dependencies {
-    // Use the latest Groovy version for building this library
     implementation libs.groovy
 
     // This dependency is used by the application.
     // implementation libs.guava
 
-    // Use the awesome Spock testing and specification framework even with Java
     testImplementation libs.spock.core
     testImplementation libs.junit
     testImplementation libs.geb.spock7
@@ -70,7 +64,7 @@ dependencies {
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -78,7 +72,6 @@ application {
     // Define the main class for the application.
     mainClass = 'net.codebuilders.App'
 }
-
 
 tasks.register('integrationTest', Test) {
     description = 'Runs integration tests.'

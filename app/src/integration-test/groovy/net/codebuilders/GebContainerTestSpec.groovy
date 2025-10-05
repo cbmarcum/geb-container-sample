@@ -2,7 +2,7 @@ package net.codebuilders
 
 import grails.plugin.geb.ContainerGebConfiguration
 import grails.plugin.geb.ContainerGebSpec
-import spock.lang.Shared
+import net.codebuilders.App
 
 
 /**
@@ -12,38 +12,31 @@ import spock.lang.Shared
 @ContainerGebConfiguration(reporting = true)
 class GebContainerTestSpec extends ContainerGebSpec {
 
-    @Shared
-    serverPort = 8080
+    static TestFileServer server
 
-    void 'should display the correct title on the home page'() {
-        when: 'visiting the home page'
-            go('https://groovy.apache.org/geb/')
-
-        then: 'the page title is correct'
-            title == 'Geb - Very Groovy Browser Automation'
+    def setupSpec() {
+        server = new TestFileServer()
+        server.start(8080)
     }
 
+    // the config file should contain a 'hostPort = 8090' setting
+    def "should use the hostPort con GebConfig.groovy"() {
 
-    void 'should display the correct title on the docs page'() {
-        when: 'visiting the home page'
-        go('https://groovy.apache.org/geb/manual/snapshot/')
+        when: "go to localhost"
+        go "/"
 
-        then: 'the title is correct'
-        title == 'The Book Of Geb'
-    }
+        then: "the page title should be correct"
+        title == "Hello Geb"
 
-    // this test requires a new Grails app running on localhost:8080
-    void 'should display the correct title with a grails app'() {
-        when: 'visiting the home page'
-        go('/')
+        and: "the welcome header should be displayed"
+        $("h1").text() == "Welcome to the Geb/Spock Test"
 
-        then: 'the title is correct'
-        title == 'Welcome to Grails'
     }
 
     def cleanup() {
         // give the vnc container time to copy the video
         sleep(1000)
+        server.stop(0)
     }
 
 }

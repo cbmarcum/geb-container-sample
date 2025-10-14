@@ -9,16 +9,15 @@ import geb.spock.GebSpec
 
 class GebTestSpec extends GebSpec {
 
-    void 'should display the correct title on the home page'() {
+    def "should display the correct title on the home page"() {
         when: 'visiting the home page'
         go('https://groovy.apache.org/geb/')
-        sleep(10 * 1000)
 
         then: 'the page title is correct'
             title == 'Geb - Very Groovy Browser Automation'
     }
 
-    void 'should display the correct title on the docs page'() {
+    def "should display the correct title on the docs page"() {
         when: 'visiting the home page'
         go('https://groovy.apache.org/geb/manual/snapshot/')
 

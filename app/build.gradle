@@ -13,6 +13,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    mavenLocal() // for geb snapshot
 }
 
 // we're using a separate source set for browser container tests
@@ -44,6 +45,7 @@ dependencies {
     testImplementation libs.spock.core
     testImplementation libs.junit
     testImplementation libs.geb.spock8
+    // testImplementation "org.apache.groovy.geb:geb-spock:8.0.1-SNAPSHOT"
 
 
     integrationTestImplementation libs.geb.container

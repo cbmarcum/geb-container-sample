@@ -5,6 +5,10 @@ A sample application using the [Geb Container](https://github.com/cbmarcum/geb-c
 
 Geb Containers integrates [Apache Geb](https://groovy.apache.org/geb/) with [Testcontainers](https://testcontainers.com/) to make it easy to write functional tests for your applications and utilize browsers running in testcontainers and optionally record the browser using a VNC testcontainer and/or capture reporting screenshots and HTML.
 
+## System Requirements
+
+Running and testing this application require Java 21+ due to the sample application using SimpleFileServer. 
+
 ## Usage
 
 This sample project is an example of functional web tests using Geb Container in the `integration-test` sources, Apache Geb tests in the `test` sources, and an application to run in the `main` source set.

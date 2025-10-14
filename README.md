@@ -38,4 +38,4 @@ The `itegrationTest` starts and stops this application during testing.
 
 ## More Information
 
-See [Geb-Container](https://github.com/cbmarcum/geb-container/) and [Geb](https://groovy.apache.org/geb/) for how to use build.gradle and GebConfig.groovy to configure all other options.
+See [Geb-Container](https://github.com/cbmarcum/geb-container/) and [Geb](https://groovy.apache.org/geb/) for how to use `build.gradle` and `GebConfig.groovy` to configure all other options.

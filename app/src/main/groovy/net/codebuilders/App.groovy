@@ -3,21 +3,11 @@
  */
 package net.codebuilders
 
-import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.SimpleFileServer
-import jdk.jpackage.internal.resources.ResourceLocator
-
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 class App {
 
     static TestFileServer server
 
     static void main(String[] args) {
-        // println new App().greeting
 
         server = new TestFileServer()
 

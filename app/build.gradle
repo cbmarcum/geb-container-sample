@@ -1,7 +1,3 @@
-/*
- * Run with: ./gradlew run
- *
- */
 
 plugins {
     // Apply the groovy Plugin to add support for Groovy.
@@ -36,6 +32,8 @@ configurations {
     integrationTestRuntimeOnly.extendsFrom runtimeOnly
 }
 
+
+// uses gradle/libs.versions.toml
 dependencies {
     implementation libs.groovy
 
@@ -56,7 +54,6 @@ dependencies {
     testRuntimeOnly libs.selenium.chrome.driver
     testRuntimeOnly libs.selenium.edge.driver
 
-    // needed?
     integrationTestImplementation 'org.testcontainers:spock:1.21.3'
 
 }

@@ -13,7 +13,7 @@ Running and testing this application require Java 21+ due to the sample applicat
 
 This sample project is an example of functional web tests using Geb Container in the `integration-test` sources, Apache Geb tests in the `test` sources, and an application to run in the `main` source set.
 
-Each source set has a GebConfig.groovy in `resources` that is configured with an `environments` block. These environments are used to specify which browser type to use for the test run.  The default browser when not specified is `firefox`.  Configured environments are `firefox`, `chrome`, and `edge`.
+Each test source set has a GebConfig.groovy in `resources` that is configured with an `environments` block. These environments are used to specify which browser type to use for the test run.  The default browser when not specified is `firefox`.  Configured environments are `firefox`, `chrome`, and `edge`.
 Firefox is generally available on most platforms which is why we configured it as the default.
 
 To run all tests with firefox on Unix/Linux:

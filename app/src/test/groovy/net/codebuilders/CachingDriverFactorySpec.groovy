@@ -6,6 +6,7 @@ import geb.driver.DriverFactory
 import geb.spock.GebSpec
 import org.openqa.selenium.NoSuchSessionException
 import org.openqa.selenium.WebDriver
+import spock.lang.PendingFeature
 import spock.util.concurrent.BlockingVariable
 
 
@@ -31,7 +32,7 @@ class CachingDriverFactorySpec extends GebSpec {
         perThreadDriver1 != perThreadDriver2.get()
     }
 
-
+    @PendingFeature(reason = 'will be fixed by https://github.com/apache/groovy-geb/pull/289')
     def "first driver should quit after clear cache and quit driver"() {
 
         given:

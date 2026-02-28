@@ -47,4 +47,27 @@ class TestFileServer {
         }
     }
 
+    static void main(String[] args) {
+        int port = 8080
+        if (args.length > 0) {
+            try {
+                port = Integer.parseInt(args[0])
+            } catch (NumberFormatException e) {
+                println "Invalid port number: ${args[0]}. Using default port 8080."
+            }
+        }
+
+        def fileServer = new TestFileServer()
+        fileServer.start(port)
+
+        // Add shutdown hook to gracefully stop the server
+        Runtime.runtime.addShutdownHook(new Thread({
+            fileServer.stop(0)
+        }))
+
+        // Keep the server running
+        println "Press Ctrl+C to stop the server."
+        Thread.currentThread().join()
+    }
+
 }

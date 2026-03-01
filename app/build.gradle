@@ -46,7 +46,7 @@ dependencies {
     // testImplementation "org.apache.groovy.geb:geb-spock:8.0.1-SNAPSHOT"
 
 
-    integrationTestImplementation libs.geb.container
+    integrationTestImplementation libs.geb.testcontainer
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4'
     // Need a driver implementation
@@ -83,7 +83,7 @@ tasks.register('integrationTest', Test) {
     }
 
     systemProperty('geb.env', System.getProperty('geb.env')?: 'firefox')
-    systemProperty('grails.geb.recording.mode', 'RECORD_ALL') // also RECORD_FAILING
+    systemProperty('geb.container.recording.mode', 'RECORD_ALL') // also RECORD_FAILING
 }
 
 check.dependsOn integrationTest
